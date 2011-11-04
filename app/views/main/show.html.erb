@@ -5,10 +5,11 @@
   <p><%= @location %></p>
 
   <ul id="navlist">
+    <li><%= link_to "#{@twitter}.com", "http://#{@twitter}.com", :target => "iframe_a" %></li>
     <% @sites.sort.each do |key, value| %>
       <li><%= link_to key.capitalize, value, :target => get_target(key) %></li>
     <% end %>
   </ul>
 </div>
 
-<iframe src="http://<%= @twitter %>.com" name="iframe_a"></iframe>
+<iframe src="/default" name="iframe_a"></iframe>

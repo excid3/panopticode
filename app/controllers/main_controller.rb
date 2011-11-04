@@ -5,7 +5,14 @@ class MainController < ApplicationController
 
   def show
     @twitter = params[:twitter_id]
-    user = Twitter.user @twitter
+
+    begin
+      user = Twitter.user @twitter
+    rescue
+      flash[:alert] = "Invalid twitter user"
+      redirect_to root_path and return
+    end
+
     @timezone = user.time_zone
     @avatar = user.profile_image_url
     @url = user.url
@@ -14,7 +21,7 @@ class MainController < ApplicationController
 
     @sites = {
       :aboutme => "http://about.me/#{@twitter}",
-      :github => "http://github.com/#{@twitter}",
+      :github => "https://github.com/#{@twitter}",
       :twitter => "https://twitter.com/#{@twitter}",
       :facebook => "http://facebook.com/#{@twitter}",
       :gravatar => "http://en.gravatar.com/#{@twitter}",
@@ -38,19 +45,13 @@ class MainController < ApplicationController
       :linkedin => "http://www.linkedin.com/in/#{@twitter}",
     }
 
-    #aboutme = search("site:about.me \"#{@twitter}\" #{name}")
-    #if aboutme
-    #  doc = Nokogiri::HTML(open(aboutme))
-    #  raise doc
-    #end
-    #linkedin = search("site:linkedin.com \"#{@twitter}\"")
+    @sites.delete_if { |k, v| not valid_url(v) }
+
   end
 
   private
 
-  def search(query)
-    q = GScraper::Search.query(:query => query)
-    "#{q.top_result.url.scheme}://#{q.top_result.url.host}#{q.top_result.url.path}"
+  def valid_url(url)
+    open(url) rescue false
   end
-
 end
