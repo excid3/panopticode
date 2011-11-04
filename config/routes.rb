@@ -1,4 +1,8 @@
 Panopticode::Application.routes.draw do
+  post "/" => "main#index"
+  get "/default" => "main#default"
+  get "/:twitter_id" => "main#show"
+  root :to => "main#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -16,7 +20,7 @@ Panopticode::Application.routes.draw do
   # Sample resource route with options:
   #   resources :products do
   #     member do
-  #       get 'short'
+  #       get 'shortn'
   #       post 'toggle'
   #     end
   #

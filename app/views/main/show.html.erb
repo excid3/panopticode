@@ -1,0 +1,14 @@
+<div id="container">
+  <h1>@<%= @twitter %></h1>
+  <p><%= @name %></p>
+  <p><%= @timezone %></p>
+  <p><%= @location %></p>
+
+  <ul id="navlist">
+    <% @sites.sort.each do |key, value| %>
+      <li><%= link_to key.capitalize, value, :target => get_target(key) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<iframe src="http://<%= @twitter %>.com" name="iframe_a"></iframe>

@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
+gem "gscraper", "~> 0.3.0"
+gem "twitter", "~> 1.7.2"
+gem "nokogiri", "~> 1.5.0"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

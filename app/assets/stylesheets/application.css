@@ -5,3 +5,59 @@
  *= require_self
  *= require_tree . 
 */
+/*
+ *Overide the system defaults
+ */
+
+html, body, h1, #navlist { margin: 0; padding: 0; }
+
+body
+{
+  background: none repeat scroll 0 0 #000;
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  height: 100%;
+}
+
+a { text-decoration: none; color: red; }
+a:hover { text-decoration: underline; }
+p { color: #888; margin: 0; padding: 0; }
+
+#container {
+  background-color: rgba(0,0,0,0.85);
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+#twitter img { float: left; }
+#twitter h1 { vertical-align: center; }
+
+iframe {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+#navlist { margin-top: 10px; }
+#navlist li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#main {
+  margin-top: 200px;
+  text-align: center;
+}
+#main h1 { margin: 10px; }
+#main input {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #CCC;
+
+  padding: 6px;
+}
